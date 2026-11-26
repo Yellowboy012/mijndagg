@@ -729,7 +729,7 @@ html,body{font-size:22px}.hero .t{font-size:66px}.hero .dd{font-size:32px}.hero 
    INSTELLINGEN (voor familie)
    =================================================================== */
 var AGENDA_LINK = 'https://docs.google.com/spreadsheets/d/1F4f8tJwu5G-wKcJUhh0u-OezPgDCgUAzLRBJKfe4tvw/edit'; // spreadsheet "Agenda Oma"
-var TAB = {agenda:0, jarig:1001, taken:1002};   // vaste nummers van de tabbladen
+var TAB = {agenda:0, jarig:1001, taken:1002, bel:1003};   // vaste nummers van de tabbladen
 var PLAATS = {naam:'Delft', lat:52.01, lon:4.36};
 var NIEUWS = {nu:'https://www.nu.nl/rss/Algemeen', nos:'https://feeds.nos.nl/nosnieuwsalgemeen', west:'https://www.omroepwest.nl/rss/index.xml'};
 var ZENDERS = [
@@ -754,7 +754,7 @@ function reeks(n){var a=[];for(var i=0;i<n;i++)a.push(i);return a}
 function show(id){stopLezen();document.querySelectorAll('.view').forEach(function(v){v.classList.remove('on')});$(id).classList.add('on');window.scrollTo(0,0);
  document.body.classList.toggle('home-aan',id==='home');if(id!=='teken'&&typeof tkBewaarNu==='function')tkBewaarNu();
  var acties={agenda:function(){toonAgenda(true)},teken:startTeken,taken:toonTaken,jarig:toonJarig,weer:laadWeer,nieuws:laadNieuws,radio:tekenZenders,weetnog:wnMenu,
-   memory:startMemory,bke:startBke,spreek:nextQ,bel:function(){renderBel(false)},notities:tekenNotities,woord:woordNiveaus,galgje:startGalgje,sudoku:sudokuKeuze};
+   memory:startMemory,bke:startBke,spreek:nextQ,bel:function(){renderBel(false);laadTab(TAB.bel,function(){if($('bel').classList.contains('on'))renderBel(false)})},notities:tekenNotities,woord:woordNiveaus,galgje:startGalgje,sudoku:sudokuKeuze};
  if(acties[id])acties[id]()}
 document.addEventListener('click',function(e){
  var b=e.target.closest('[data-go]');if(b){show(b.getAttribute('data-go'));return}
@@ -838,7 +838,7 @@ function tabel(gid){var t=tabData[gid];if(!t)return null;
  return{cols:cols,rows:rows.map(function(r){return r.c||[]})}}
 function kol(cols,re,d){for(var i=0;i<cols.length;i++)if(re.test(cols[i]))return i;return d}
 function tekst(c){return c&&c.v!=null&&c.v!==''?String(c.f!=null?c.f:c.v).trim():''}
-function laadAlles(klaar){var n=3;function een(){if(--n===0){toonKort();if(klaar)klaar()}}laadTab(TAB.agenda,een);laadTab(TAB.jarig,een);laadTab(TAB.taken,een)}
+function laadAlles(klaar){var n=4;function een(){if(--n===0){toonKort();if(klaar)klaar()}}laadTab(TAB.agenda,een);laadTab(TAB.jarig,een);laadTab(TAB.taken,een);laadTab(TAB.bel,een)}
 
 /* ---------- Agenda ---------- */
 function dagNr(s){s=s.replace(/^(elke|iedere)\s+/,'');for(var i=0;i<7;i++)if(s.indexOf(dagen[i])===0)return i;return -1}
@@ -931,7 +931,7 @@ function verjaardagen(){var T=tabel(TAB.jarig);if(!T)return null;
    else{m=/^(\d{1,2})\s+([a-z]+)(?:\s+(\d{4}))?/.exec(s);if(!m)return;for(var k=0;k<12;k++)if(maanden[k].indexOf(m[2].slice(0,3))===0)mnd=k;if(mnd===null)return;dag=+m[1];jaar=m[3]?+m[3]:null}}
   if(mnd<0||mnd>11||!dag)return;
   var nu=vandaagMidden(0),volgende=new Date(nu.getFullYear(),mnd,dag);if(volgende<nu)volgende=new Date(nu.getFullYear()+1,mnd,dag);
-  uit.push({naam:naam,dag:dag,mnd:mnd,over:Math.round((volgende-nu)/86400000),wordt:jaar&&jaar>1900?volgende.getFullYear()-jaar:null,ft:tekst(c[fi])})});
+  uit.push({naam:naam,dag:dag,mnd:mnd,over:Math.round((volgende-nu)/86400000),wordt:jaar&&jaar>1900?volgende.getFullYear()-jaar:null,ft:tekst(c[fi])||ftVoorNaam(naam)})});
  return uit.sort(function(a,b){return a.over-b.over})}
 function ftVoor(p){if(p.ft)return p.ft;var n=p.naam.toLowerCase().split(/[\s(]/)[0];
  for(var i=0;i<contacten.length;i++){var c=contacten[i];if(c.n&&c.t&&n.length>1&&c.n.toLowerCase().indexOf(n)>-1)return c.t}return ''}
@@ -1352,10 +1352,23 @@ var contacten=lees('omaContacten',[]);while(contacten.length<4)contacten.push({n
 var KLEUREN=['c2','c3','c4','c1'];
 function ftAdres(t){t=(t||'').trim();if(t.indexOf('@')>-1)return t.replace(/\s/g,'');return t.replace(/[^+0-9]/g,'').replace(/^00/,'+').replace(/^0(?=[1-9])/,'+31')}
 function ftLink(t){return'facetime://'+encodeURIComponent(ftAdres(t)).replace('%2B','+').replace('%40','@')}
+/* --- Contacts from the "FaceTime" sheet tab ---
+   Family fills in name / FaceTime address / photo link in the spreadsheet.
+   Falls back to contacts stored locally on the iPad (older setup) when the tab is empty. */
+function fotoUrl(link){link=(link||'').trim();if(!link)return'';
+ // Google Drive share links aren't direct images; the thumbnail endpoint is (file must be shared "anyone with the link")
+ var m=/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]{20,})/.exec(link)||/[?&]id=([\w-]{20,})/.exec(link);
+ if(m)return'https://drive.google.com/thumbnail?id='+m[1]+'&sz=w400';
+ return/^https?:\/\//.test(link)?link:''}
+function sheetContacten(){var T=tabel(TAB.bel);if(!T)return[];
+ var ni=kol(T.cols,/naam|wie/,0),ti=kol(T.cols,/facetime|nummer|telefoon|mail/,1),fi=kol(T.cols,/foto|plaatje|afbeelding/,2);
+ return T.rows.map(function(r){return{n:tekst(r[ni]),t:tekst(r[ti]),f:fotoUrl(tekst(r[fi]))}}).filter(function(c){return c.n&&c.t})}
+function ftVoorNaam(n){n=(n||'').toLowerCase();var h=sheetContacten().filter(function(c){return c.n.toLowerCase()===n})[0];return h?h.t:''}
+function belLijst(){var S=sheetContacten();return S.length?S:contacten.filter(function(c){return c.n&&c.t})}
 function renderBel(edit){var l=$('bellijst'),f=$('belform');l.innerHTML='';f.innerHTML='';var any=false;
- contacten.forEach(function(c,i){if(c.n&&c.t){any=true;var a=document.createElement('a');a.className='big '+KLEUREN[i%4];a.href=ftLink(c.t);
-  a.innerHTML='<span class="i">'+(c.f?'<img alt="" src="'+c.f+'">':'📹')+'</span><span>'+esc(c.n)+'<small>Tik om te bellen</small></span>';l.appendChild(a)}});
- if(!any&&!edit){var p=document.createElement('div');p.className='hint';p.textContent='Hier komen de namen en foto’s van familie te staan. Met één tik belt oma ze via FaceTime.';l.appendChild(p)}
+ belLijst().forEach(function(c,i){any=true;var a=document.createElement('a');a.className='big '+KLEUREN[i%4];a.href=ftLink(c.t);
+  a.innerHTML='<span class="i">'+(c.f?'<img alt="" src="'+esc(c.f)+'" onerror="this.parentNode.textContent=\'📹\'">':'📹')+'</span><span>'+esc(c.n)+'<small>Tik om te bellen</small></span>';l.appendChild(a)});
+ if(!any&&!edit){var p=document.createElement('div');p.className='hint';p.textContent='Hier komen de namen en foto’s van de familie te staan. Met één tik belt u ze via FaceTime.';l.appendChild(p)}
  f.style.display=edit?'block':'none';if($('beledit'))$('beledit').style.display=edit?'none':'inline-block';if(!edit)return;
  contacten.forEach(function(c,i){var d=document.createElement('div');d.className='persoon';
   d.innerHTML='<label>Persoon '+(i+1)+'</label><input data-n="'+i+'" placeholder="Naam (bijv. Dochter Anna)" value="'+esc(c.n)+'">'+
