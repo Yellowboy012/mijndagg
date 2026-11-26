@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -47,7 +48,7 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent}
 
 /* ---------- Knoppen ---------- */
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.big{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:184px;border:3px solid var(--d9);box-shadow:0 7px 0 var(--d9);background:var(--b9);border-radius:var(--r);color:var(--ink);text-decoration:none;font:inherit;font-size:32px;font-weight:800;cursor:pointer;text-align:center;padding:16px;width:100%;transition:transform .08s}
+.big{min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:184px;border:3px solid var(--d9);box-shadow:0 7px 0 var(--d9);background:var(--b9);border-radius:var(--r);color:var(--ink);text-decoration:none;font:inherit;font-size:32px;font-weight:800;cursor:pointer;text-align:center;padding:16px;width:100%;transition:transform .08s}
 .big .i{display:flex;align-items:center;justify-content:center;width:98px;height:98px;border-radius:50%;background:rgba(255,255,255,.85);box-shadow:inset 0 0 0 3px rgba(0,0,0,.05);font-size:56px;line-height:1;flex:none;overflow:hidden}
 .big .i img{width:100%;height:100%;object-fit:cover}
 .big small{font-size:21px;font-weight:600;color:var(--soft);display:block;line-height:1.25;margin-top:2px}
@@ -65,16 +66,19 @@ button{font-family:inherit;-webkit-tap-highlight-color:transparent}
 .stack{display:grid;gap:24px}
 .stack .big{min-height:124px;flex-direction:row;justify-content:flex-start;gap:24px;padding:16px 26px;text-align:left}
 .stack .big .i{width:86px;height:86px;font-size:48px}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.duo{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
 .wide{grid-column:1/-1}
 /* Beginscherm: vier grote knoppen, de rest kleiner */
 .hoofd{display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.big.groot{min-height:212px;font-size:40px;gap:12px;border-width:4px;border-radius:34px}
-.big.groot .i{width:112px;height:112px;font-size:64px}
+.big.groot{min-height:236px;font-size:44px;gap:12px;border-width:4px;border-radius:34px}
+.big.groot .i{width:128px;height:128px;font-size:74px}
 .big.groot small{font-size:23px}
-.meer{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px;padding-top:26px;border-top:3px dashed var(--lijn)}
-.big.klein{min-height:146px;font-size:24px;gap:8px;padding:12px 8px;border-radius:24px;box-shadow:0 5px 0 var(--sh,rgba(0,0,0,.15))}
-.big.klein .i{width:72px;height:72px;font-size:42px}
+.meer{margin-top:30px;padding-top:6px;border-top:3px dashed var(--lijn)}
+.mrij.m4 .big.klein{font-size:23px;padding:12px 2px}
+.mkop{font-size:30px;font-weight:800;color:var(--paars);margin:22px 4px 12px}
+.mrij{display:grid;gap:18px}.mrij.m4{grid-template-columns:repeat(4,minmax(0,1fr))}.mrij.m3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.big.klein{min-height:176px;font-size:25px;gap:8px;padding:12px 8px;border-radius:24px;box-shadow:0 5px 0 var(--sh,rgba(0,0,0,.15))}
+.big.klein .i{width:84px;height:84px;font-size:48px}
 .big.klein .badge{top:8px;right:8px;min-width:38px;height:38px;font-size:21px}
 .big.klein.c1{--sh:var(--d1)}.big.klein.c2{--sh:var(--d2)}.big.klein.c3{--sh:var(--d3)}.big.klein.c4{--sh:var(--d4)}.big.klein.c5{--sh:var(--d5)}.big.klein.c6{--sh:var(--d6)}.big.klein.c7{--sh:var(--d7)}.big.klein.c8{--sh:var(--d8)}.big.klein.c9{--sh:var(--d9)}
 .drij{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 14px}
@@ -84,7 +88,7 @@ body.s-herfst{--chip:#c8692c;--chipt:#7a3a12}body.s-winter{--chip:#6f8fc2;--chip
 
 /* ---------- Kopregel per scherm ---------- */
 .kop{display:flex;align-items:center;gap:18px;margin-bottom:24px}
-.kop h1{flex:1;margin:0}
+.kop h1{flex:1 1 0;min-width:0;margin:0;overflow-wrap:anywhere}
 .back{display:inline-flex;align-items:center;gap:10px;flex:none;min-height:80px;padding:0 28px;border-radius:40px;border:3px solid var(--btnd);box-shadow:0 6px 0 var(--btnd);background:var(--btn);color:#fff;font:inherit;font-size:30px;font-weight:800;cursor:pointer}
 .back:active{transform:translateY(4px);box-shadow:0 2px 0 var(--btnd)}
 h1{font-size:42px;font-weight:800;padding:12px 26px;border-radius:26px;border:3px solid var(--d1);background:var(--b1);color:#24507a;line-height:1.2;min-height:80px;display:flex;align-items:center}
@@ -201,6 +205,66 @@ h2{font-size:32px;font-weight:800;margin:30px 0 12px;color:var(--paars)}
 .nb .big{min-height:96px;font-size:27px;padding:10px}
 .nb .big.kies,.tabs .big.kies{outline:5px solid var(--ink);outline-offset:3px}
 
+/* ---------- Nieuws lezen ---------- */
+.nrij{display:flex;gap:18px;align-items:stretch;width:100%;text-align:left;background:var(--card);border:3px solid var(--d3);border-radius:24px;padding:16px 20px;margin:18px 0;box-shadow:0 5px 0 rgba(220,138,51,.32);font:inherit;color:var(--ink);cursor:pointer}
+.nrij:nth-child(3n+2){border-color:var(--d1);box-shadow:0 5px 0 rgba(79,143,196,.32)}
+.nrij:nth-child(3n+3){border-color:var(--d7);box-shadow:0 5px 0 rgba(51,153,143,.32)}
+.nrij:active{transform:translateY(3px)}
+.nrij .nf{flex:none;width:132px;height:100px;border-radius:16px;object-fit:cover;background:var(--b3);align-self:center}
+.nrij .nb2{flex:1;min-width:0}
+.nrij b{display:block;font-size:31px;font-weight:800;line-height:1.22;margin-bottom:4px}
+.nrij p{margin:4px 0;font-size:24px;color:var(--soft);line-height:1.3}
+.nrij small{display:block;font-size:22px;font-weight:700;color:#8a4a0e;margin-top:4px}
+.lees{background:var(--card);border:3px solid var(--d3);border-radius:30px;padding:26px 28px;margin-top:20px;box-shadow:0 6px 0 rgba(220,138,51,.35)}
+.lees h2{font-size:42px;line-height:1.18;margin:4px 0 16px;color:var(--ink)}
+.lees img{width:100%;max-height:420px;object-fit:cover;border-radius:20px;margin:0 0 18px}
+.lbron{font-size:24px;font-weight:800;color:#8a4a0e;letter-spacing:.5px}
+.ltekst p{font-size:34px;line-height:1.5;margin:0 0 20px}
+.lstatus{font-size:23px;color:var(--soft);font-weight:700;margin-top:6px}
+.lweb{display:block;text-align:center;margin:26px 0 6px;font-size:21px;color:#6c5a95}
+.zachtmelding{text-align:center;background:var(--card);border:3px dashed var(--d3);border-radius:26px;padding:26px 22px;margin:18px 0}
+.zachtmelding b{display:block;font-size:36px;color:var(--paars);margin-bottom:6px}
+.zachtmelding p{font-size:26px;color:var(--soft);margin:6px 0 14px}
+
+/* ---------- Weer ---------- */
+.wsch{display:flex;gap:18px;align-items:flex-start;border-radius:26px;border:4px solid;padding:16px 22px;margin:0 0 16px}
+.wsch .wsi{font-size:54px;line-height:1;flex:none}
+.wsch b{display:block;font-size:32px;font-weight:800;line-height:1.2}
+.wsch span.t{display:block;font-size:26px;font-weight:700;margin-top:2px;line-height:1.3}
+.wsch.geel{background:#fff3bf;border-color:#e0b400;color:#5c4600}
+.wsch.oranje{background:#ffd9a8;border-color:#e8741a;color:#6b2f00}
+.wsch.rood{background:#ffc9c4;border-color:#d33a2c;color:#7a1208}
+.wschnoot{font-size:19px;color:var(--soft);text-align:center;margin:-6px 0 18px}
+.wnu{display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;text-align:center;background:linear-gradient(135deg,#dcedfb,#fbefbd);border:3px solid var(--d1);box-shadow:0 7px 0 var(--d1);border-radius:30px;padding:20px 24px;margin-bottom:18px}
+.wnu .i{font-size:104px;line-height:1}
+.wnu .tt{font-size:78px;font-weight:800;line-height:1}
+.wnu .z{font-size:30px;font-weight:700}
+.wnu small{display:block;font-size:23px;font-weight:600;color:var(--soft)}
+.wadvies{text-align:center;font-size:40px;font-weight:800;line-height:1.25;padding:20px 22px;margin:0 0 18px;border-radius:28px;background:#fff;border:4px solid var(--d4);box-shadow:0 6px 0 rgba(204,92,141,.3);color:var(--paars)}
+.wregen{background:var(--card);border:3px solid var(--d1);box-shadow:0 6px 0 rgba(79,143,196,.32);border-radius:28px;padding:18px 22px 14px;margin-bottom:18px}
+.wregen .rk{font-size:22px;font-weight:800;color:#24507a;letter-spacing:1px}
+.wregen .rm{font-size:34px;font-weight:800;line-height:1.25;margin:4px 0 10px}
+.rbalken{display:flex;align-items:flex-end;gap:12px;height:120px;border-bottom:3px solid #cfe0f2}
+.rbalken div{flex:1;border-radius:10px 10px 0 0;background:#4f8fc4;min-height:6px}
+.rbalken div.droog{background:#d6e2ef}
+.rlabels{display:flex;gap:12px;margin-top:6px}
+.rlabels span{flex:1;text-align:center;font-size:21px;font-weight:700;color:var(--soft)}
+.w3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.w3d{background:var(--card);border:3px solid var(--d6);border-radius:26px;padding:14px 10px 16px;text-align:center;box-shadow:0 6px 0 rgba(196,160,32,.35)}
+.w3d:nth-child(2){border-color:var(--d7);box-shadow:0 6px 0 rgba(51,153,143,.32)}
+.w3d:nth-child(3){border-color:var(--d5);box-shadow:0 6px 0 rgba(129,105,196,.32)}
+.w3d .dn{font-size:28px;font-weight:800;color:var(--paars)}
+.w3d .di{font-size:84px;line-height:1.15}
+.w3d .dt{font-size:34px;font-weight:800}
+.w3d .dt small{font-size:26px;color:var(--soft);font-weight:700}
+.w3d .dr{font-size:23px;font-weight:700;color:#24507a;margin:2px 0 8px}
+.w3d .da{font-size:23px;font-weight:700;line-height:1.25}
+.wzon{display:flex;justify-content:space-around;gap:12px;background:linear-gradient(120deg,#fff0c0,#ffe1c6);border:3px solid var(--d3);box-shadow:0 6px 0 rgba(220,138,51,.32);border-radius:28px;padding:16px 12px;text-align:center;margin-bottom:12px}
+.wzon div{font-size:25px;font-weight:700}
+.wzon b{display:block;font-size:42px;font-weight:800}
+.wzon .zi{font-size:50px;display:block;line-height:1.1}
+.wnoot{text-align:center;font-size:22px;color:var(--soft);margin:10px 0}
+
 /* ---------- Radio ---------- */
 .zender.speelt{outline:6px solid var(--d8);outline-offset:4px}
 .zender .st{margin-left:auto;font-size:27px;font-weight:800;white-space:nowrap}
@@ -238,6 +302,13 @@ h2{font-size:32px;font-weight:800;margin:30px 0 12px;color:var(--paars)}
 .wlijst{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:22px 0}
 .wlijst span{font-size:29px;font-weight:800;padding:8px 18px;border-radius:18px;background:var(--card);border:3px solid var(--d8)}
 .wlijst span.ok{text-decoration:line-through;opacity:.5;border-color:var(--d2)}
+.wbody{display:flex;gap:24px;align-items:flex-start;justify-content:center;flex-wrap:wrap;margin:10px 0 18px}
+.wbord{max-width:100%}
+.wbody .wlijst{flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:12px;margin:0;width:200px;max-width:100%}
+.wbody .wlijst span{font-size:25px;text-align:center;padding:10px 12px}
+.wzoom{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:6px 0 4px}
+.wzoom .knop{min-height:66px;font-size:25px;padding:0 18px;flex:0 1 auto;max-width:100%}
+.wzoom .knop:disabled{opacity:.4}
 .ghint{text-align:center;font-size:28px;font-weight:700;color:var(--soft)}
 .gwoord{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:18px 0}
 .gwoord span{width:62px;height:78px;border-bottom:6px solid var(--d8);display:flex;align-items:flex-end;justify-content:center;font-size:54px;font-weight:800;color:var(--paars)}
@@ -279,7 +350,7 @@ h2{font-size:32px;font-weight:800;margin:30px 0 12px;color:var(--paars)}
 /* ---------- Tekenen ---------- */
 #teken h1{border-color:var(--d4);background:var(--b4);color:#8a2556}
 #teken .kop{margin-bottom:16px}
-.tkbalk{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:16px}
+.tkbalk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin-bottom:16px}
 .tkknop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;min-height:86px;padding:6px 4px;border-radius:20px;border:3px solid var(--d9);background:#fff;box-shadow:0 5px 0 var(--d9);font:inherit;font-size:19px;font-weight:800;color:var(--ink);cursor:pointer;line-height:1.15;white-space:nowrap}
 .tkknop span{font-size:34px;line-height:1.15}
 .tkknop:active{transform:translateY(4px);box-shadow:0 1px 0 var(--d9)}
@@ -300,7 +371,7 @@ h2{font-size:32px;font-weight:800;margin:30px 0 12px;color:var(--paars)}
 .kleur.aan::after{content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .kleur.licht.aan::after{color:#333;text-shadow:none}
 .kleur.regenboog{background:conic-gradient(#e53935,#fb8c00,#fdd835,#43a047,#1e88e5,#5e35b1,#d81b60,#e53935)}
-.platen{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.platen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .plaat{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 12px 14px;border-radius:24px;border:3px solid var(--d6);background:#fff;box-shadow:0 6px 0 var(--d6);font:inherit;font-size:25px;font-weight:800;color:var(--ink);cursor:pointer}
 .plaat canvas{width:100%;aspect-ratio:10/8;border-radius:14px;background:#fff;border:2px solid #eee3d3}
 .plaat.leegvel{border-color:var(--d2);box-shadow:0 6px 0 var(--d2);background:var(--b2)}
@@ -367,8 +438,8 @@ body.s-zomer .hero .d{color:#8b6420}
 .slinger{position:absolute;top:0;left:0;right:0;height:46px;pointer-events:none;display:none}
 body.s-kerst .slinger{display:block}
 
-@media (max-width:760px){.grid{grid-template-columns:repeat(2,1fr)}.meer{grid-template-columns:repeat(4,1fr);gap:12px}.big.klein{font-size:20px;min-height:128px}.big.klein .i{width:60px;height:60px;font-size:34px}.palet{gap:8px}.tkknop{font-size:15px}.tkknop span{font-size:28px}.platen{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:620px){.hoofd{gap:16px}.big.groot{min-height:180px;font-size:28px}.big.groot .i{width:92px;height:92px;font-size:52px}.meer{grid-template-columns:repeat(2,1fr)}.wdag .wl{width:96px}.wdag .wl .g{font-size:34px}.wi{font-size:23px}.wdag.vandaag .wi{font-size:26px}.wi .tt{min-width:70px}.nuis b{font-size:30px}.weekkop b{font-size:27px}.palet{grid-template-columns:repeat(5,1fr)}
+@media (max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.mrij{gap:12px}.big.klein{font-size:20px;min-height:128px}.big.klein .i{width:60px;height:60px;font-size:34px}.palet{gap:8px}.tkknop{font-size:15px}.tkknop span{font-size:28px}.platen{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.hoofd{gap:16px}.big.groot{min-height:180px;font-size:28px}.big.groot .i{width:92px;height:92px;font-size:52px}.mrij.m4{grid-template-columns:repeat(2,minmax(0,1fr))}.mkop{font-size:26px}.vk .r .tt{min-width:52px}.mrij.m3 .big.klein{font-size:18px;padding:12px 2px}.wdag .wl{width:96px}.wdag .wl .g{font-size:34px}.wi{font-size:23px}.wdag.vandaag .wi{font-size:26px}.wi .tt{min-width:70px}.nuis b{font-size:30px}.weekkop b{font-size:27px}.palet{grid-template-columns:repeat(5,1fr)}
 html,body{font-size:22px}.hero .t{font-size:66px}.hero .dd{font-size:32px}.hero .d{font-size:22px}.big{font-size:25px;min-height:150px}.big .i{width:78px;height:78px;font-size:44px}.cards{gap:10px}.card{font-size:46px}.vak{font-size:56px}.grid,.stack,.duo{gap:18px}h1{font-size:30px;min-height:68px;padding:10px 18px}.back{min-height:68px;font-size:24px;padding:0 18px}.nb .big{font-size:21px}.gwoord span{width:44px;height:60px;font-size:38px}.toets{font-size:26px}.verhaal h3{font-size:32px}.verhaal p{font-size:25px}.vk .r{font-size:24px}.knop{font-size:24px}.jcard{flex-wrap:wrap}}
 </style>
 </head>
@@ -384,20 +455,25 @@ html,body{font-size:22px}.hero .t{font-size:66px}.hero .dd{font-size:32px}.hero 
     <div class="deco" id="deco" aria-hidden="true"></div>
   </div>
   <div class="hoofd">
-    <button class="big groot c5" data-go="bel"><span class="i">📹</span>FaceTime<small>Familie bellen</small></button>
+    <button class="big groot c5" data-go="bel"><span class="i">📹</span>FaceTime<small>Bellen</small></button>
     <button class="big groot c7" data-go="agenda"><span class="i">📅</span>Mijn agenda<small>Deze week</small></button>
     <button class="big groot c3" data-go="nieuws"><span class="i">📰</span>Het nieuws</button>
     <button class="big groot c9" data-go="radio"><span class="i">📻</span>Radio</button>
   </div>
   <div class="meer">
-    <button class="big klein c2" data-go="taken"><span class="i">✅</span>Vandaag doen<span class="badge" id="takenbadge" style="display:none"></span></button>
-    <button class="big klein c4" data-go="jarig"><span class="i">🎂</span>Verjaardagen<span class="badge" id="jarigbadge" style="display:none">!</span></button>
-    <button class="big klein c1" data-go="weer"><span class="i">⛅</span>Het weer</button>
-    <button class="big klein c6" data-go="weetnog"><span class="i">🕰️</span>Weet u nog?</button>
-    <button class="big klein c8" data-go="spel"><span class="i">🧩</span>Spelletjes</button>
-    <button class="big klein c4" data-go="teken"><span class="i">🎨</span>Tekenen</button>
-    <button class="big klein c2" data-go="notities"><span class="i">📝</span>Notities</button>
-    <a class="big klein c7" href="message://"><span class="i">✉️</span>Mijn post</a>
+    <div class="mkop">Handig</div>
+    <div class="mrij m4">
+      <button class="big klein c2" data-go="taken"><span class="i">✅</span>Vandaag doen<span class="badge" id="takenbadge" style="display:none"></span></button>
+      <button class="big klein c4" data-go="jarig"><span class="i">🎂</span>Verjaardagen<span class="badge" id="jarigbadge" style="display:none">!</span></button>
+      <button class="big klein c1" data-go="weer"><span class="i">⛅</span>Het weer</button>
+      <button class="big klein c2" data-go="notities"><span class="i">📝</span>Notities</button>
+    </div>
+    <div class="mkop">Leuk om te doen</div>
+    <div class="mrij m3">
+      <button class="big klein c6" data-go="weetnog"><span class="i">🕰️</span>Weet u nog?</button>
+      <button class="big klein c8" data-go="spel"><span class="i">🧩</span>Spelletjes</button>
+      <button class="big klein c4" data-go="teken"><span class="i">🎨</span>Tekenen</button>
+    </div>
   </div>
 </div>
 <div id="vallen" aria-hidden="true"></div>
@@ -418,7 +494,6 @@ html,body{font-size:22px}.hero .t{font-size:66px}.hero .dd{font-size:32px}.hero 
   </div>
   <div id="agendabox"></div>
   <div id="eigenlijst"></div>
-  <button class="tiny" id="agendaedit">Agenda koppelen (voor familie)</button>
   <div class="edit" id="agendaform" style="display:none">
     <label for="agendalink">Link van de Google Spreadsheet met de agenda</label>
     <input id="agendalink" placeholder="https://docs.google.com/spreadsheets/d/…" autocapitalize="off" autocorrect="off" spellcheck="false">
@@ -450,13 +525,24 @@ html,body{font-size:22px}.hero .t{font-size:66px}.hero .dd{font-size:32px}.hero 
 
 <!-- ===================== NIEUWS ===================== -->
 <div id="nieuws" class="view">
-  <div class="kop"><button class="back" data-go="home">← Terug</button><h1>Het nieuws</h1></div>
+  <div class="kop"><button class="back" data-go="home" id="nterug">← Terug</button><h1>Het nieuws</h1></div>
   <div class="nb">
     <button class="big c1 kies" data-bron="nu">NU.nl</button>
     <button class="big c3" data-bron="nos">NOS</button>
     <button class="big c5" data-bron="west">Omroep West</button>
   </div>
   <div id="nlijst"><div class="hint">Even kijken…</div></div>
+  <div id="nlezen" style="display:none">
+    <button class="knop paars blok" id="nleesterug" style="margin-top:0">← Terug naar het nieuws</button>
+    <article class="lees">
+      <div class="lbron" id="nlbron"></div>
+      <h2 id="nlt"></h2>
+      <img id="nli" alt="" style="display:none">
+      <div class="ltekst" id="nltekst"></div>
+      <div class="lstatus" id="nlstatus"></div>
+    </article>
+    <div class="duo" style="margin-top:22px"><button class="knop geel" id="nlevoor">🔊 Voorlezen</button><button class="knop paars" id="nleesterug2">← Naar het nieuws</button></div>
+  </div>
 </div>
 
 <!-- ===================== RADIO ===================== -->
@@ -546,8 +632,11 @@ html,body{font-size:22px}.hero .t{font-size:66px}.hero .dd{font-size:32px}.hero 
   </div>
   <div id="wpuzzel" style="display:none">
     <div class="msg" id="wmsg"></div>
-    <div class="wgrid" id="wgrid"></div>
-    <div class="wlijst" id="wlijst"></div>
+    <div class="wzoom"><button class="knop" id="wzuit">A− Kleiner</button><button class="knop" id="wzin">A+ Groter</button></div>
+    <div class="wbody">
+      <div class="wbord" id="wbord"><div class="wgrid" id="wgrid"></div></div>
+      <div class="wlijst" id="wlijst"></div>
+    </div>
     <div class="duo"><button class="knop" id="wnieuw">Nieuwe puzzel</button><button class="knop paars" id="wander">Ander niveau</button></div>
   </div>
 </div>
@@ -607,7 +696,6 @@ html,body{font-size:22px}.hero .t{font-size:66px}.hero .dd{font-size:32px}.hero 
   <div class="kop"><button class="back" data-go="home">← Terug</button><h1>FaceTime</h1></div>
   <div class="stack" id="bellijst"></div>
   <div class="edit" id="belform" style="display:none"></div>
-  <button class="tiny" id="beledit">Namen, nummers en foto’s aanpassen (voor familie)</button>
 </div>
 
 <!-- ===================== NOTITIES ===================== -->
@@ -804,15 +892,15 @@ function toonAgenda(opnieuw){var box=$('agendabox');
    var kl='wdag'+(isVandaag?' vandaag':verschil<0?' geweest':'')+(dt.getDay()===0||dt.getDay()===6?' weekend':'');
    h+='<div class="'+kl+'"'+(isVandaag?' id="agvandaag"':'')+'><div class="wl"><span class="n">'+dagen[dt.getDay()].slice(0,2)+'</span><span class="g">'+dt.getDate()+'</span><span class="m">'+maanden[dt.getMonth()].slice(0,3)+'</span></div><div class="wr">'+(isVandaag?'<span class="vlag">VANDAAG</span>':verschil===1?'<span class="vlag" style="background:var(--d5);box-shadow:0 3px 0 #5b48a0">MORGEN</span>':'')+items+'</div></div>'}
   h+='</div></section>'}
- if(nietOp)h='<div class="hint">'+(sheetId(sheetLink())?'De afspraken van de familie kunnen nu niet worden opgehaald. Hieronder staat wel de week. Familie: controleer of de spreadsheet is gedeeld met “Iedereen met de link kan bekijken”.':'De afspraken van de familie komen hier te staan zodra de agenda is gekoppeld. Tik onderaan op “Agenda koppelen”.')+'</div>'+h;
+ if(nietOp)h='<div class="hint">'+(sheetId(sheetLink())?'De afspraken van de familie kunnen nu niet worden opgehaald. Hieronder staat wel de week.':'De afspraken van de familie komen hier te staan.')+'</div>'+h;
  else if(tabStatus[TAB.agenda]==='fout')h+='<div class="uitleg">Let op: de agenda kon net niet worden bijgewerkt.</div>';
  box.innerHTML=h;toonEigenLijst()}
 function weekNr(d){var t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())),dn=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-dn);var j=new Date(Date.UTC(t.getUTCFullYear(),0,1));return Math.ceil(((t-j)/86400000+1)/7)}
-$('agendaedit').onclick=function(){$('agendaform').style.display='block';$('agendaedit').style.display='none';$('agendalink').value=sheetLink()};
+if($('agendaedit'))$('agendaedit').onclick=function(){$('agendaform').style.display='block';$('agendaedit').style.display='none';$('agendalink').value=sheetLink()};
 $('agendaopslaan').onclick=function(){var l=$('agendalink').value.trim();
  if(l&&!sheetId(l)){alert('Dit lijkt geen link van een Google Spreadsheet. Kopieer de link via de knop “Delen”.');return}
  try{if(l)localStorage.setItem('omaAgendaLink',l);else localStorage.removeItem('omaAgendaLink')}catch(e){}
- tabData={};$('agendaform').style.display='none';$('agendaedit').style.display='inline-block';laadAlles(function(){toonAgenda(false)})};
+ tabData={};$('agendaform').style.display='none';if($('agendaedit'))$('agendaedit').style.display='inline-block';laadAlles(function(){toonAgenda(false)})};
 
 /* ---------- Eigen afspraken (oma zet ze zelf) ---------- */
 function pad2(x){return(x<10?'0':'')+x}
@@ -879,12 +967,11 @@ function toonTaken(){var L=takenLijst(),s=takenStaat(),box=$('takenlijst'),klaar
 /* ---------- Kort overzicht op het beginscherm ---------- */
 function toonKort(){var vk=$('vk'),h='',L=afspraken(),J=verjaardagen()||[],T=takenLijst(),s=takenStaat();
  var vandaag=opDag(L,vandaagMidden(0));
- vandaag.slice(0,3).forEach(function(a){h+='<div class="r" data-go="agenda"><span class="tt">'+esc(a.tijd||'')+'</span><span>'+esc(a.wat)+'</span></div>'});
- if(vandaag.length>3)h+='<div class="r" data-go="agenda" style="font-size:23px">…en nog '+(vandaag.length-3)+' meer</div>';
- if(L&&!vandaag.length)h+='<div class="r" data-go="agenda"><span class="tt">📅</span><span>Niets op de agenda. Een rustige dag ☕</span></div>';
+ vandaag.slice(0,2).forEach(function(a){h+='<div class="r" data-go="agenda"><span class="tt">'+esc(a.tijd||'')+'</span><span>'+esc(a.wat)+'</span></div>'});
+ if(vandaag.length>2)h+='<div class="r" data-go="agenda" style="font-size:23px">…en nog '+(vandaag.length-2)+' meer</div>';
+ if(L&&!vandaag.length)h+='<div class="r" data-go="agenda"><span class="tt">📅</span><span>Niets gepland. Een rustige dag ☕</span></div>';
  J.filter(function(p){return p.over<=1}).forEach(function(p){h+='<div class="r feest" data-go="jarig"><span class="tt">🎂</span><span>'+(p.over===0?'Vandaag is '+esc(p.naam)+' jarig!':'Morgen is '+esc(p.naam)+' jarig!')+'</span></div>'});
  var klaar=T.filter(function(x){return s.k[x.t]}).length;
- if(T.length)h+='<div class="r doen" data-go="taken"><span class="tt">✅</span><span>'+(klaar===T.length?'Alles van vandaag is gedaan':'Nog '+(T.length-klaar)+' van de '+T.length+' dingen te doen')+'</span></div>';
  vk.innerHTML=h?'<div class="kopje">VANDAAG</div>'+h:'';vk.classList.toggle('on',!!h);
  var tb=$('takenbadge');if(T.length&&klaar<T.length){tb.textContent=T.length-klaar;tb.style.display='flex'}else tb.style.display='none';
  $('jarigbadge').style.display=J.some(function(p){return p.over<=1})?'flex':'none'}
@@ -894,31 +981,115 @@ function toonKort(){var vk=$('vk'),h='',L=afspraken(),J=verjaardagen()||[],T=tak
    =================================================================== */
 var WC={0:['☀️','Zonnig'],1:['🌤️','Overwegend zonnig'],2:['⛅','Half bewolkt'],3:['☁️','Bewolkt'],45:['🌫️','Mistig'],48:['🌫️','Mistig'],51:['🌦️','Lichte motregen'],53:['🌦️','Motregen'],55:['🌧️','Motregen'],61:['🌧️','Lichte regen'],63:['🌧️','Regen'],65:['🌧️','Veel regen'],71:['🌨️','Lichte sneeuw'],73:['🌨️','Sneeuw'],75:['❄️','Veel sneeuw'],80:['🌦️','Buien'],81:['🌧️','Buien'],82:['⛈️','Zware buien'],95:['⛈️','Onweer'],96:['⛈️','Onweer'],99:['⛈️','Onweer']};
 function wc(c){return WC[c]||['🌡️','Wisselend']}
-function laadWeer(){fetch('https://api.open-meteo.com/v1/forecast?latitude='+PLAATS.lat+'&longitude='+PLAATS.lon+'&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Europe%2FAmsterdam&forecast_days=4')
- .then(function(r){return r.json()}).then(function(d){var c=d.current,w=wc(c.weather_code),D=d.daily,h='',regen=D.precipitation_probability_max[0]>=50;
-  h+='<div class="now"><div class="i">'+w[0]+'</div><div class="tt">'+Math.round(c.temperature_2m)+'°</div><div class="z">'+w[1]+' in '+PLAATS.naam+'</div></div>';
-  h+='<div class="item"><b>'+(regen?'Neem een paraplu mee ☂️':'Vandaag is het droog genoeg')+'</b><p>Vandaag tussen '+Math.round(D.temperature_2m_min[0])+' en '+Math.round(D.temperature_2m_max[0])+' graden.</p></div>';
-  for(var i=1;i<4;i++){var t=new Date(D.time[i]+'T12:00'),x=wc(D.weather_code[i]);h+='<div class="dag"><span class="i">'+x[0]+'</span><b>'+(i===1?'Morgen':hoofd(dagen[t.getDay()]))+'</b><span>'+x[1]+', '+Math.round(D.temperature_2m_min[i])+'–'+Math.round(D.temperature_2m_max[i])+'°</span></div>'}
-  $('weerbox').innerHTML=h}).catch(function(){$('weerbox').innerHTML='<div class="item"><b>Het weer kan nu niet worden opgehaald</b><p>Probeer het straks nog eens.</p></div>'})}
+function laadWeer(){
+ var u='https://api.open-meteo.com/v1/forecast?latitude='+PLAATS.lat+'&longitude='+PLAATS.lon+'&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,snowfall_sum,wind_gusts_10m_max,sunrise,sunset&minutely_15=precipitation&forecast_minutely_15=12&timezone=Europe%2FAmsterdam&forecast_days=3';
+ fetch(u).then(function(r){return r.json()}).then(function(d){
+  if(!d||!d.current||!d.daily)throw 0;
+  var c=d.current,w=wc(c.weather_code),D=d.daily,h='';
+  /* waarschuwingen (berekend uit de verwachting) */
+  var W=[];
+  for(var i=0;i<3;i++){
+   var nm=i===0?'vandaag':i===1?'morgen':'overmorgen',g=D.wind_gusts_10m_max[i]||0,mn=D.temperature_2m_min[i],nat=(D.precipitation_sum[i]||0)>0.2||(D.snowfall_sum[i]||0)>0,code=D.weather_code[i];
+   if(g>=110)W.push({n:3,i:'🌪️',t:'Zware storm '+nm,x:'Blijf zoveel mogelijk binnen. Windstoten tot '+Math.round(g)+' km per uur.'});
+   else if(g>=90)W.push({n:2,i:'🌬️',t:'Storm '+nm,x:'Het stormt. Windstoten tot '+Math.round(g)+' km per uur. Wees voorzichtig buiten.'});
+   else if(g>=75)W.push({n:1,i:'💨',t:'Veel wind '+nm,x:'Windstoten tot '+Math.round(g)+' km per uur. Houd uw paraplu goed vast.'});
+   if(mn<=0&&nat)W.push({n:(mn<=-3||(D.snowfall_sum[i]||0)>2)?2:1,i:'🧊',t:'Kans op gladheid '+nm,x:'Het kan glad zijn op straat. Loop rustig en trek stevige schoenen aan.'});
+   else if(mn<=-4)W.push({n:1,i:'🥶',t:'Streng vorst '+nm,x:'Het is erg koud. Kijk uit voor gladde plekken.'});
+   if(code>=95)W.push({n:1,i:'⛈️',t:'Onweer '+nm,x:'Blijf liever binnen als het onweert.'});
+  }
+  W.sort(function(a,b){return b.n-a.n});
+  var kl=['','geel','oranje','rood'],kn=['','Code geel','Code oranje','Code rood'];
+  W.slice(0,3).forEach(function(x){h+='<div class="wsch '+kl[x.n]+'"><span class="wsi">'+x.i+'</span><div><b>'+kn[x.n]+': '+esc(x.t)+'</b><span class="t">'+esc(x.x)+'</span></div></div>'});
+  if(W.length)h+='<div class="wschnoot">Berekend uit de weersverwachting.</div>';
+  /* nu */
+  h+='<div class="wnu"><div class="i">'+w[0]+'</div><div><div class="tt">'+Math.round(c.temperature_2m)+'°</div></div><div class="z">'+w[1]+'<small>nu in '+esc(PLAATS.naam)+'</small></div></div>';
+  /* advies */
+  var kans=D.precipitation_probability_max[0]||0,mx=D.temperature_2m_max[0],cd=D.weather_code[0],adv;
+  if(D.snowfall_sum[0]>0.5||(cd>=71&&cd<=77))adv='Het sneeuwt. Trek warme laarzen aan ❄️';
+  else if(cd>=95)adv='Blijf vandaag liever binnen ⛈️';
+  else if(kans>=50||(D.precipitation_sum[0]||0)>=1)adv='Neem een paraplu mee ☂️';
+  else if(mx<=6)adv='Trek een warme jas aan 🧥';
+  else if(mx<=12)adv='Trek een jas aan 🧥';
+  else if(mx>=27)adv='Het is warm. Drink genoeg water 💧';
+  else if(mx>=20&&cd<=2)adv='Heerlijk weer, ook voor buiten ☀️';
+  else if(cd<=2)adv='Lekker weer om naar buiten te gaan ☀️';
+  else adv='Een rustig dagje. Een vestje is wel prettig 🧶';
+  h+='<div class="wadvies">'+adv+'</div>';
+  /* regen komend uur */
+  var M=d.minutely_15;
+  if(M&&M.time&&M.precipitation){
+   var nu=Date.now(),st=0;
+   for(var k=0;k<M.time.length;k++){if(new Date(M.time[k]).getTime()<=nu)st=k;else break}
+   var P=M.precipitation.slice(st,st+8).map(function(v){return v||0}),T0=new Date(M.time[st]).getTime(),dr=0.05,msg='',em='💧';
+   if(P.length>=4){
+    var eerste=-1,j;for(j=0;j<P.length;j++){if(P[j]>dr){eerste=j;break}}
+    var min=function(n){var m=Math.round((T0+n*15*60000-nu)/60000/5)*5;return m<0?0:m};
+    if(eerste===-1){msg='De komende twee uur blijft het droog';em='🌤️'}
+    else if(eerste===0){var stop=-1;for(j=1;j<P.length;j++){if(P[j]<=dr){stop=j;break}}
+     msg=stop===-1?'Het regent nu en dat blijft nog even zo':'Het regent nu. Over ongeveer '+Math.max(min(stop),5)+' minuten is het droog';em='🌧️'}
+    else{var m=Math.max(min(eerste),5);msg='Over '+m+' minuten begint het te regenen';em='🌧️'}
+    h+='<div class="wregen"><div class="rk">REGEN IN HET KOMENDE UUR</div><div class="rm">'+em+' '+msg+'</div><div class="rbalken">';
+    var lab=['Nu','15 min','30 min','45 min'];
+    for(j=0;j<4;j++){var v=P[j],ht=v>dr?Math.min(100,25+v/1.5*75):6;h+='<div class="'+(v>dr?'':'droog')+'" style="height:'+ht+'%"></div>'}
+    h+='</div><div class="rlabels">'+lab.map(function(x){return'<span>'+x+'</span>'}).join('')+'</div></div>';
+   }
+  }
+  /* 3 dagen */
+  h+='<div class="w3">';
+  for(i=0;i<3;i++){var t=new Date(D.time[i]+'T12:00'),x=wc(D.weather_code[i]),dn=i===0?'Vandaag':i===1?'Morgen':hoofd(dagen[t.getDay()]),kk=D.precipitation_probability_max[i]||0;
+   var ad=(D.snowfall_sum[i]||0)>0.5?'Sneeuw ❄️':D.weather_code[i]>=95?'Onweer ⛈️':(kk>=50||(D.precipitation_sum[i]||0)>=1)?'Paraplu mee ☂️':D.temperature_2m_max[i]<=6?'Warme jas 🧥':D.temperature_2m_max[i]<=12?'Jas aan 🧥':D.temperature_2m_max[i]>=27?'Warm, drink water 💧':'Lekker buiten ☀️';
+   h+='<div class="w3d"><div class="dn">'+dn+'</div><div class="di">'+x[0]+'</div><div class="dt">'+Math.round(D.temperature_2m_max[i])+'° <small>'+Math.round(D.temperature_2m_min[i])+'°</small></div><div class="dr">'+esc(x[1])+'<br>'+kk+'% kans op regen</div><div class="da">'+ad+'</div></div>'}
+  h+='</div>';
+  /* zon */
+  var hm=function(s){var q=new Date(s);return q.getHours()+':'+('0'+q.getMinutes()).slice(-2)};
+  if(D.sunrise&&D.sunset)h+='<div class="wzon"><div><span class="zi">🌅</span>De zon komt op<b>'+hm(D.sunrise[0])+'</b></div><div><span class="zi">🌇</span>De zon gaat onder<b>'+hm(D.sunset[0])+'</b></div></div>';
+  h+='<div class="wnoot">Weer voor '+esc(PLAATS.naam)+'</div>';
+  $('weerbox').innerHTML=h;
+ }).catch(function(){$('weerbox').innerHTML='<div class="zachtmelding"><b>Het weer komt zo</b><p>Even geduld, het lukt straks vanzelf.</p><button class="knop paars" id="weeropnieuw">Nog een keer proberen</button></div>';$('weeropnieuw').onclick=function(){$('weerbox').innerHTML='<div class="hint">Even kijken…</div>';laadWeer()}})}
 
 /* ===================================================================
    NIEUWS
    =================================================================== */
-var nieuwsCache={},bron='nu';
+var nieuwsCache={},bron='nu',huidig=null,leesNr=0;
 function schoon(s){var d=document.createElement('div');d.innerHTML=String(s||'');return(d.textContent||'').replace(/\s+/g,' ').trim()}
+function plaatje(h){var m=String(h||'').match(/<img[^>]+src=["']([^"']+)/i);return m?m[1]:''}
 function viaRss2json(url){return fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(url)).then(function(r){return r.json()}).then(function(j){
- if(j.status!=='ok'||!j.items||!j.items.length)throw 0;return j.items.map(function(x){return{t:schoon(x.title),d:schoon(x.description).slice(0,220),l:x.link}})})}
+ if(j.status!=='ok'||!j.items||!j.items.length)throw 0;return j.items.map(function(x){return{t:schoon(x.title),d:schoon(x.description).slice(0,220),k:schoon(x.content||x.description),l:x.link,f:x.thumbnail||(x.enclosure&&x.enclosure.link)||plaatje(x.content)||plaatje(x.description),dt:x.pubDate}})})}
 function viaProxy(url){return fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(url)).then(function(r){return r.text()}).then(function(t){
  var x=new DOMParser().parseFromString(t,'text/xml'),it=[].slice.call(x.querySelectorAll('item'));if(!it.length)throw 0;
- return it.map(function(i){var g=function(n){var e=i.querySelector(n);return e?e.textContent:''};return{t:schoon(g('title')),d:schoon(g('description')).slice(0,220),l:g('link').trim()}})})}
+ return it.map(function(i){var g=function(n){var e=i.querySelector(n);return e?e.textContent:''},en=i.querySelector('enclosure'),mt=i.getElementsByTagName('media:thumbnail')[0];return{t:schoon(g('title')),d:schoon(g('description')).slice(0,220),k:schoon(g('description')),l:g('link').trim(),f:(en&&en.getAttribute('url'))||(mt&&mt.getAttribute('url'))||plaatje(g('description')),dt:g('pubDate')}})})}
+function geleden(s){var t=new Date(String(s||'').replace(' ','T'));if(isNaN(t))return'';var m=Math.round((Date.now()-t.getTime())/60000);if(m<1)return'zojuist';if(m<60)return m+' minuten geleden';var u=Math.round(m/60);if(u<24)return u+' uur geleden';var dg=Math.round(u/24);return dg===1?'gisteren':dg+' dagen geleden'}
 function toonNieuws(){var l=nieuwsCache[bron];
  if(l==='laden'){$('nlijst').innerHTML='<div class="hint">Even kijken…</div>';return}
- if(!l||!l.length){$('nlijst').innerHTML='<div class="item"><b>Het nieuws kan nu niet worden opgehaald</b><p>Probeer het straks nog eens.</p></div>';return}
- $('nlijst').innerHTML=l.slice(0,10).map(function(x){return'<div class="item"><b>'+esc(x.t)+'</b>'+(x.d&&x.d!==x.t?'<p>'+esc(x.d)+'</p>':'')+(x.l?'<a href="'+esc(x.l)+'" target="_blank" rel="noopener">Lees het hele bericht</a>':'')+'</div>'}).join('')}
+ if(!l||!l.length){$('nlijst').innerHTML='<div class="zachtmelding"><b>Het nieuws komt zo</b><p>Even geduld, het lukt straks vanzelf.</p><button class="knop paars" id="nieuwsopnieuw">Nog een keer proberen</button></div>';$('nieuwsopnieuw').onclick=function(){nieuwsCache[bron]=null;laadNieuws()};return}
+ $('nlijst').innerHTML=l.slice(0,10).map(function(x,n){var g=geleden(x.dt);return'<button class="nrij" data-n="'+n+'">'+(x.f?'<img class="nf" alt="" src="'+esc(x.f)+'" onerror="this.style.display=\'none\'">':'')+'<span class="nb2"><b>'+esc(x.t)+'</b>'+(x.d&&x.d!==x.t?'<p>'+esc(x.d)+'</p>':'')+(g?'<small>'+g+'</small>':'')+'</span></button>'}).join('');
+ document.querySelectorAll('.nrij').forEach(function(k){k.onclick=function(){openBericht(nieuwsCache[bron][+k.getAttribute('data-n')])}})}
 function laadNieuws(){var b=bron,c=nieuwsCache[b];if(c&&c!=='laden'&&c.tijd&&Date.now()-c.tijd<10*60*1000){toonNieuws();return}
  nieuwsCache[b]='laden';toonNieuws();
  viaRss2json(NIEUWS[b]).catch(function(){return viaProxy(NIEUWS[b])}).then(function(l){l.tijd=Date.now();nieuwsCache[b]=l}).catch(function(){nieuwsCache[b]=null}).then(function(){if(bron===b)toonNieuws()})}
-document.querySelectorAll('[data-bron]').forEach(function(k){k.onclick=function(){bron=k.getAttribute('data-bron');document.querySelectorAll('[data-bron]').forEach(function(x){x.classList.toggle('kies',x===k)});laadNieuws()}});
+var BRONNAAM={nu:'NU.nl',nos:'NOS',west:'Omroep West'};
+function alinea(t){return String(t||'').split(/\n+/).filter(function(x){return x.trim()}).map(function(x){return'<p>'+esc(x.trim())+'</p>'}).join('')}
+function zetTekst(arr){$('nltekst').innerHTML=alinea(arr.join('\n'))}
+function nieuwsLijstWeer(){stopLezen();$('nlezen').style.display='none';$('nlijst').style.display='';document.querySelector('#nieuws .nb').style.display='';window.scrollTo(0,0)}
+function openBericht(x){if(!x)return;huidig=x;var nr=++leesNr;
+ document.querySelector('#nieuws .nb').style.display='none';$('nlijst').style.display='none';$('nlezen').style.display='block';
+ $('nlbron').textContent=(BRONNAAM[bron]||'')+(x.dt&&geleden(x.dt)?' · '+geleden(x.dt):'');$('nlt').textContent=x.t;
+ var im=$('nli');if(x.f){im.src=x.f;im.style.display='block';im.onerror=function(){im.style.display='none'}}else im.style.display='none';
+ var kort=[];if(x.k&&x.k!==x.t)kort.push(x.k);else if(x.d)kort.push(x.d);
+ zetTekst(kort);$('nlstatus').textContent=x.l?'Het hele bericht wordt opgehaald…':'';window.scrollTo(0,0);
+ if(!x.l)return;
+ fetch('https://api.allorigins.win/raw?url='+encodeURIComponent(x.l)).then(function(r){return r.text()}).then(function(t){
+  var doc=new DOMParser().parseFromString(t,'text/html'),sel=['article p','main p','[itemprop=articleBody] p','p'],ps=[];
+  for(var i=0;i<sel.length&&ps.length<2;i++){ps=[].slice.call(doc.querySelectorAll(sel[i])).map(function(e){return(e.textContent||'').replace(/\s+/g,' ').trim()}).filter(function(z){return z.length>45&&!/cookie|abonnement|nieuwsbrief|©|privacy/i.test(z)})}
+  var uniek=[];ps.forEach(function(z){if(uniek.indexOf(z)<0)uniek.push(z)});
+  if(nr!==leesNr)return;
+  if(uniek.join(' ').length<200)throw 0;
+  zetTekst(uniek.slice(0,40));$('nlstatus').textContent=''
+ }).catch(function(){if(nr!==leesNr)return;$('nlstatus').textContent=kort.length?'Dit is de samenvatting van het bericht.':'Het hele bericht kon nu niet worden opgehaald.'})}
+$('nleesterug').onclick=nieuwsLijstWeer;$('nleesterug2').onclick=nieuwsLijstWeer;
+$('nterug').addEventListener('click',function(e){if($('nlezen').style.display!=='none'){e.stopImmediatePropagation();e.preventDefault();nieuwsLijstWeer()}},true);
+$('nlevoor').onclick=function(){if(leest){stopLezen();return}if(huidig)voorlees(huidig.t+'. '+($('nltekst').textContent||''),'nlevoor')};
+document.querySelectorAll('[data-bron]').forEach(function(k){k.onclick=function(){nieuwsLijstWeer();bron=k.getAttribute('data-bron');document.querySelectorAll('[data-bron]').forEach(function(x){x.classList.toggle('kies',x===k)});laadNieuws()}});
 
 /* ===================================================================
    RADIO
@@ -938,11 +1109,12 @@ $('rstop').onclick=stopRadio;
    VOORLEZEN
    =================================================================== */
 var leest=false;
-function stopLezen(){if('speechSynthesis' in window){try{speechSynthesis.cancel()}catch(e){}}leest=false;var b=$('wnlees');if(b)b.textContent='🔊 Voorlezen'}
-function voorlees(t){if(!('speechSynthesis' in window)){alert('Voorlezen werkt niet op dit apparaat.');return}
- stopLezen();if(huidig>-1)stopRadio();var u=new SpeechSynthesisUtterance(t);u.lang='nl-NL';u.rate=0.88;
+var leesKnop='wnlees';
+function stopLezen(){if('speechSynthesis' in window){try{speechSynthesis.cancel()}catch(e){}}leest=false;['wnlees','nlevoor'].forEach(function(id){var b=$(id);if(b)b.textContent='🔊 Voorlezen'})}
+function voorlees(t,knop){if(!('speechSynthesis' in window)){alert('Voorlezen werkt niet op dit apparaat.');return}
+ stopLezen();leesKnop=knop||'wnlees';if(huidig>-1)stopRadio();var u=new SpeechSynthesisUtterance(t);u.lang='nl-NL';u.rate=0.88;
  var v=(speechSynthesis.getVoices()||[]).filter(function(x){return x.lang&&x.lang.toLowerCase().indexOf('nl')===0});if(v.length)u.voice=v[0];
- u.onend=function(){leest=false;$('wnlees').textContent='🔊 Voorlezen'};leest=true;$('wnlees').textContent='⏹ Stop';speechSynthesis.speak(u)}
+ u.onend=function(){leest=false;$(leesKnop).textContent='🔊 Voorlezen'};leest=true;$(leesKnop).textContent='⏹ Stop';speechSynthesis.speak(u)}
 
 /* ===================================================================
    WEET U NOG?  (verhalen en herinneringen van vroeger)
@@ -1084,7 +1256,14 @@ $('bnew').onclick=startBke;
 var WOORDEN=['KAT','HOND','ROOS','TULP','FIETS','MOLEN','KAAS','BROOD','THEE','KOFFIE','ZON','MAAN','BOOM','BLOEM','TUIN','HUIS','DELFT','KERK','VOGEL','VIS','MELK','APPEL','PEER','TAART','KOEK','SOEP','JAS','HOED','SJAAL','KLOK','BRIL','BOEK','KRANT','RADIO','PIANO','WOLK','REGEN','SNEEUW','WINTER','ZOMER','LENTE','HERFST','STRAND','ZEE','BOOT','TREIN','MARKT','BAKKER','KANAAL','GRACHT','SCHAAP','PAARD','KOE','EEND','ZWAAN','MUIS','LEPEL','VORK','MES','BORD','KOPJE','SCHOTEL','KAARS','DEUR','RAAM','STOEL','TAFEL','LAMP','DEKEN','KUSSEN','BLAUW','GROEN','ROOD','GEEL','ORANJE','WIT','POES','KONIJN','DAHLIA','ZONNEBLOEM','PANNENKOEK','STROOPWAFEL','HAGELSLAG','TELEFOON','BRIEF','POSTZEGEL','PARAPLU'];
 var NIVEAUS=[{n:6,a:4,r:[[0,1]]},{n:8,a:6,r:[[0,1],[1,0]]},{n:10,a:8,r:[[0,1],[1,0],[1,1]]},{n:12,a:10,r:[[0,1],[1,0],[1,1],[-1,1],[0,-1],[-1,0],[-1,-1],[1,-1]]}];
 var VUL='AAAEEEEEIIINNNOOORRRSSTTTDDLLKKGGMMHBVPUUJWZ';
-var wN=0,wRaster=[],wPlaats=[],wSel=null,wGev=0;
+var wN=0,wRaster=[],wPlaats=[],wSel=null,wGev=0,wZoom=+(lees('omaWZoom',1)||1);
+var WZOOMS=[0.7,0.85,1,1.2,1.4];
+function wPas(){var n=NIVEAUS[wN].n,b=$('wbord');
+ b.style.width=Math.round(500*wZoom)+'px';var fs=Math.max(12,Math.min(70,Math.floor((b.clientWidth||600)/n*0.55)));
+ b.querySelectorAll('.wc').forEach(function(c){c.style.fontSize=fs+'px'});
+ $('wzin').disabled=wZoom>=WZOOMS[WZOOMS.length-1];$('wzuit').disabled=wZoom<=WZOOMS[0]}
+function wVerander(stap){var i=WZOOMS.indexOf(wZoom);if(i<0)i=2;i=Math.max(0,Math.min(WZOOMS.length-1,i+stap));wZoom=WZOOMS[i];try{localStorage.setItem('omaWZoom',JSON.stringify(wZoom))}catch(e){}wPas()}
+$('wzin').onclick=function(){wVerander(1)};$('wzuit').onclick=function(){wVerander(-1)};
 function woordNiveaus(){$('wniveaus').style.display='block';$('wpuzzel').style.display='none'}
 document.querySelectorAll('[data-niveau]').forEach(function(k){k.onclick=function(){wN=+k.getAttribute('data-niveau');maakWoordzoeker()}});
 $('wnieuw').onclick=function(){maakWoordzoeker()};$('wander').onclick=woordNiveaus;
@@ -1100,9 +1279,8 @@ function maakWoordzoeker(){var c=NIVEAUS[wN],n=c.n,r,pl;
  for(var i=0;i<r.length;i++)if(!r[i])r[i]=VUL[Math.floor(Math.random()*VUL.length)];
  wRaster=r;wPlaats=pl;wSel=null;wGev=0;$('wniveaus').style.display='none';$('wpuzzel').style.display='block';
  $('wmsg').textContent='Tik op de eerste en de laatste letter van een woord';
- var g=$('wgrid');g.style.gridTemplateColumns='repeat('+n+',1fr)';g.innerHTML='';
- var breed=Math.min(g.parentNode.clientWidth||800,820),fs=Math.max(18,Math.min(46,Math.floor(breed/n*0.55)));
- r.forEach(function(l,idx){var b=document.createElement('button');b.className='wc';b.textContent=l;b.style.fontSize=fs+'px';b.onclick=function(){wTik(idx)};g.appendChild(b)});tekenWlijst()}
+ var g=$('wgrid');g.style.gridTemplateColumns='repeat('+n+',minmax(0,1fr))';g.innerHTML='';
+ r.forEach(function(l,idx){var b=document.createElement('button');b.className='wc';b.textContent=l;b.onclick=function(){wTik(idx)};g.appendChild(b)});wPas();tekenWlijst()}
 function tekenWlijst(){$('wlijst').innerHTML=wPlaats.map(function(p){return'<span class="'+(p.ok?'ok':'')+'">'+p.w+'</span>'}).join('')}
 function wTik(idx){var cellen=$('wgrid').children,n=NIVEAUS[wN].n;
  if(wSel===null){wSel=idx;cellen[idx].classList.add('sel');$('wmsg').textContent='Tik nu op de laatste letter';return}
@@ -1177,8 +1355,8 @@ function ftLink(t){return'facetime://'+encodeURIComponent(ftAdres(t)).replace('%
 function renderBel(edit){var l=$('bellijst'),f=$('belform');l.innerHTML='';f.innerHTML='';var any=false;
  contacten.forEach(function(c,i){if(c.n&&c.t){any=true;var a=document.createElement('a');a.className='big '+KLEUREN[i%4];a.href=ftLink(c.t);
   a.innerHTML='<span class="i">'+(c.f?'<img alt="" src="'+c.f+'">':'📹')+'</span><span>'+esc(c.n)+'<small>Tik om te bellen</small></span>';l.appendChild(a)}});
- if(!any&&!edit){var p=document.createElement('div');p.className='hint';p.textContent='Hier komen de namen en foto’s van familie te staan. Met één tik belt oma ze via FaceTime. Vraag iemand om ze in te vullen (knop onderaan).';l.appendChild(p)}
- f.style.display=edit?'block':'none';$('beledit').style.display=edit?'none':'inline-block';if(!edit)return;
+ if(!any&&!edit){var p=document.createElement('div');p.className='hint';p.textContent='Hier komen de namen en foto’s van familie te staan. Met één tik belt oma ze via FaceTime.';l.appendChild(p)}
+ f.style.display=edit?'block':'none';if($('beledit'))$('beledit').style.display=edit?'none':'inline-block';if(!edit)return;
  contacten.forEach(function(c,i){var d=document.createElement('div');d.className='persoon';
   d.innerHTML='<label>Persoon '+(i+1)+'</label><input data-n="'+i+'" placeholder="Naam (bijv. Dochter Anna)" value="'+esc(c.n)+'">'+
    '<input data-t="'+i+'" placeholder="Telefoonnummer of e-mail van hun FaceTime" autocapitalize="off" autocorrect="off" value="'+esc(c.t)+'">'+
@@ -1191,7 +1369,7 @@ function renderBel(edit){var l=$('bellijst'),f=$('belform');l.innerHTML='';f.inn
 function verklein(file,klaar){var url=URL.createObjectURL(file),img=new Image();
  img.onload=function(){var z=240,cv=document.createElement('canvas');cv.width=z;cv.height=z;var m=Math.min(img.width,img.height);cv.getContext('2d').drawImage(img,(img.width-m)/2,(img.height-m)/2,m,m,0,0,z,z);URL.revokeObjectURL(url);klaar(cv.toDataURL('image/jpeg',0.82))};
  img.onerror=function(){alert('Deze foto kon niet worden geopend. Probeer een andere.')};img.src=url}
-$('beledit').onclick=function(){renderBel(true)};
+if($('beledit'))$('beledit').onclick=function(){renderBel(true)};
 
 /* ===================================================================
    NOTITIES
@@ -1385,3 +1563,5 @@ setInterval(function(){laadAlles(function(){if($('agenda').classList.contains('o
 </script>
 </body>
 </html>
+
+</body></html>
